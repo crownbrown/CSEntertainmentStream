@@ -1,3 +1,6 @@
+# CSEntertainmentStreamPP
+Full implementation of MariaDB SQL database webapp, with Node.js/AJAX frontend. Hand-written MVC implementation rather than 3rd party installation. 
+
 Entertainment Stream streams niche TV series (Series) to a current user base of 1000 customers. 
 Without a clearly defined relational database to track the customers, their billing information, the available episodes/series, 
 as well as the genres of the series, and the members viewing history such a streaming service is not possible. A database driven 
