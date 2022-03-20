@@ -1,3 +1,5 @@
+# CSExerciseTrackerPP
+React/Mongo DB Single Page Application for Tracking Exercise
 Full implementation of MariaDB SQL database webapp, with Node.js/AJAX frontend. Hand-written MVC implementation rather than 3rd party installation. 
 
 Entertainment Stream streaming niche TV series (Series) to a current user base of 1000 customers. 
