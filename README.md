@@ -1,8 +1,4 @@
-# CSExerciseTrackerPP
-React/Mongo DB Single Page Application for Tracking Exercise
-Full implementation of MariaDB SQL database webapp, with Node.js/AJAX frontend. Hand-written MVC implementation rather than 3rd party installation. 
-
-Entertainment Stream streaming niche TV series (Series) to a current user base of 1000 customers. 
+Entertainment Stream streams niche TV series (Series) to a current user base of 1000 customers. 
 Without a clearly defined relational database to track the customers, their billing information, the available episodes/series, 
 as well as the genres of the series, and the members viewing history such a streaming service is not possible. A database driven 
 website will record the Billing information of Members, as well as 100 TV series (3,000 episodes) of 15 Genres available for streaming. 
