@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entertainment Stream</title>
+</head>
+<body>
+    <! Navigation header ––>
+    <table align=center border=2>
+        <tr>
+            <td width=120 align = center><a href="/">Home</a></td>
+            <td width=120 align = center><a href='/billings'>Billings</a></td>
+            <td width=120 align = center><a href='/members'>Members</a></td>
+            <td width=120 align = center><a href='/episodes'>Episodes</a></td>
+            <td width=120 align = center><a href='/membersepisodes'>MembersEpisodes</a></td>
+            <td width=120 align = center><a href='/series'>Series</a></td>
+            <td width=120 align = center><a href='/genres'>Genres</a></td>
+            <td width=120 align = center><a href='/seriesgenres'>SeriesGenres</a></td>
+        </tr>
+    </table>
+    <h1>
+        SeriesGenres
+    </h1>
+    
+
+
+
+
+<table border=2>
+        <thead>
+            <th>seriesID</th>
+            <th>genreID</th>
+        </thead>
+        <! Loads each entry as a new row in table ––>
+        {{#each seriesgenres}} 
+        <tr>
+            <td>{{seriesID}}</td> 
+            <td>{{genreID}}</td> 
+            <td><button onclick="deleteSeriesGenres({{seriesGenresID}})">Delete</button></td>
+            <td><a href="/seriesgenres/{{seriesGenresID}}">Update</a></td>
+        </tr>
+        {{/each}} 
+    </table>
+
+<p>
+    <! Filter form by series and genre ––>
+    <form id='filter_series_genres_by_series' action='' method=''>
+<!--- this form does not submit directly, the button handles all the interaction with backend -->
+    <label> Filter by series:</label>
+    <select id='series_genres_series_filter' name="series_genres_series_filter"> 
+        {{#each series}}
+        <option value="{{seriesID}}">{{seriesName}}</option>
+        {{/each}}
+    </select>
+    <input type="button" value="Filter" onclick="filterSeriesGenresBySeries()">
+</form>
+   <a href='/seriesgenres'><button>Reset</button></a>
+<p>
+        <form id='filter_series_genres_by_genres' action='' method=''>
+<!--- this form does not submit directly, the button handles all the interaction with backend -->
+    <label> Filter by genres:</label>
+    <select id='series_genres_genres_filter' name="series_genres_genres_filter"> 
+        {{#each genres}}
+        <option value="{{genreID}}">{{genreDescription}}</option>
+        {{/each}}
+    </select>
+    <input type="button" value="Filter" onclick="filterSeriesGenresByGenres()">
+</form>
+<! Resets page to all records after search ––>
+   <a href='/seriesgenres'><button>Reset</button></a>
+    <p>
+
+    <! Form for adding record, including FK ––>
+    <form id="addseriesgenres" action="/seriesgenres" method="post">
+        <fieldset>Add SeriesGenres
+            <p>
+        
+
+                <label for="seriesID">seriesID</label>
+                <select name="seriesID"> 
+                {{#each series}}
+                <option value="{{seriesID}}">{{seriesName}}</option>
+                {{/each}}
+                </select><br>
+
+                <label for="genreID">genreID</label>
+                <select name="genreID"> 
+                {{#each genres}}
+                <option value="{{genreID}}">{{genreDescription}}</option>
+                {{/each}}
+                </select><br>
+
+            <input type="submit" value="Submit">
+    </fieldset>
+    </form>
+
+
+
+</body>
+</html>

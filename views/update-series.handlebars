@@ -1,0 +1,10 @@
+<html>
+<h1>Update Series: {{series.seriesName}}</h1>
+<! Form for udpating single record ––>
+<form id="update-series" action="/series" method="post">
+    seriesName: <input type="text" name="seriesName" value="{{series.seriesName}}"><br>
+    uploadDate: <input type="date" name="uploadDate" value={{series.uploadDate}} id="#uploadDate-selector"><br> 
+</form>
+<button onclick="updateOneSeries({{series.seriesID}})">Update</button>
+<script defer>selectUploadDate({{series.uploadDate}});</script>
+</html>

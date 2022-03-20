@@ -1,0 +1,18 @@
+<html>
+<h1>Update Episode: {{episode.episodeName}}</h1>
+<! Form for udpating single record ––>
+<form id="update-episode" action="/episodes" method="post">
+    episodeName: <input type="text" name="episodeName" value="{{episode.episodeName}}"><br>
+    episodeNumber: <input type="number" name="episodeNumber" value="{{episode.episodeNumber}}"><br>
+    length: <input type="number" name="length" value="{{episode.length}}"><br>
+    uploadDate: <input type="date" name="uploadDate" value={{episode.uploadDate}}><br>
+    seriesID: <select name="seriesID" id="seriesID-selector"> 
+        {{#each series}}
+            <option value="{{seriesID}}">{{seriesName}}</option>
+        {{/each}}
+    </select><br>
+</form>
+<button onclick="updateEpisode({{episode.episodeID}})">Update</button>
+<! Script(s) for preloading drop down selections ––>
+<script defer>selectSeriesID({{episode.seriesID}});</script>
+</html>

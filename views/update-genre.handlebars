@@ -1,0 +1,8 @@
+<html>
+<h1>Update Genre: {{genre.genreDescription}}</h1>
+<! Form for udpating single record ––>
+<form id="update-genre" action="/genres" method="post">
+    genreDescription: <input type="text" name="genreDescription" value="{{genre.genreDescription}}"><br>
+</form>
+<button onclick="updateGenre({{genre.id}})">Update</button>
+</html>

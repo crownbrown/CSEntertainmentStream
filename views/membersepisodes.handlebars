@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entertainment Stream</title>
+</head>
+<body>
+    <! Navigation header ––>
+    <table align=center border=2>
+        <tr>
+            <td width=120 align = center><a href="/">Home</a></td>
+            <td width=120 align = center><a href='/billings'>Billings</a></td>
+            <td width=120 align = center><a href='/members'>Members</a></td>
+            <td width=120 align = center><a href='/episodes'>Episodes</a></td>
+            <td width=120 align = center><a href='/membersepisodes'>MembersEpisodes</a></td>
+            <td width=120 align = center><a href='/series'>Series</a></td>
+            <td width=120 align = center><a href='/genres'>Genres</a></td>
+            <td width=120 align = center><a href='/seriesgenres'>SeriesGenres</a></td>
+        </tr>
+    </table>
+
+    <h1>
+        MembersEpisodes
+    </h1>
+    
+
+
+
+
+<table border=2>
+        <thead>
+            <th>viewDate</th>
+            <th>episodeID</th>
+            <th>userID</th>
+        </thead>
+        <! Loads each entry as a new row in table ––>
+        {{#each membersepisodes}} 
+        <tr>
+            <td>{{viewDate}}</td> 
+            <td>{{episodeID}}</td> 
+            <td>{{userID}}</td> 
+            <td><button onclick="deleteMembersEpisodes({{membersEpisodesID}})">Delete</button></td>
+            <td><a href="/membersepisodes/{{membersEpisodesID}}">Update</a></td>
+        </tr>
+        {{/each}} 
+    </table>
+
+
+<p>
+
+<! Search form for search by date ––>
+<form id='search_members_episodes' action='' method=''>
+<!--- this form does not submit directly, the button handles all the interaction with backend -->
+    <label> Search membersepisodes on the following date:</label>
+    <input id='members_episodes_date_search_string' type='date' name='members_episodes_date_search_string' value=''>
+    <input type="button" value="Search" onclick="searchMembersEpisodesByDate()">
+
+
+</form>
+<! Resets page to all records after search ––>
+    <a href='/membersepisodes'><button>Reset</button></a>
+
+
+<p>
+
+<! Search form for search by series ––>
+    <form id='filter_members_episodes_by_series' action='' method=''>
+<!--- this form does not submit directly, the button handles all the interaction with backend -->
+    <label> Filter by series</label>
+    <select id='members_episodes_series_filter' name="members_episodes_series_filter"> 
+        {{#each series}}
+        <option value="{{seriesID}}">{{seriesName}}</option>
+        {{/each}}
+    </select>
+    <input type="button" value="Filter" onclick="filterMembersEpisodesBySeries()">
+</form>
+   
+        </form>
+    <p>
+
+    <! Form for adding record, including FK ––>
+    <form id="addmembersepisodes" action="/membersepisodes" method="post">
+        <fieldset>Add MembersEpisodes
+            <p>
+        
+                
+                <label for="viewDate">viewDate</label>
+                <input type="date" name="viewDate" id="membersepisodes">
+
+                <label for="episodeID">episodeID</label>
+                <select name="episodeID"> 
+                {{#each episodes}}
+                <option value="{{episodeID}}">{{episodeName}}</option>
+                {{/each}}
+                </select>
+
+                <label for="userID">userID</label>
+                <select name="userID"> 
+                {{#each members}}
+                <option value="{{userID}}">{{firstName}}</option>
+                {{/each}}
+                </select><br>
+
+            <input type="submit" value="Submit">
+    </fieldset>
+    </form>
+
+</body>
+</html>

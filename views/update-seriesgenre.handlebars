@@ -1,0 +1,22 @@
+<html>
+
+<h1>Update SeriesGenres:</h1>
+<! Form for udpating single record ––>
+<form id="update-seriesgenre" action="/seriesgenres" method="post">
+    seriesID: <select name="seriesID" id="seriesID-selector"> 
+        {{#each series}}
+            <option value="{{seriesID}}">{{seriesName}}</option>
+        {{/each}}
+    </select><br>
+    genreID: <select name="genreID" id="genreID-selector"> 
+        {{#each genres}}
+            <option value="{{genreID}}">{{genreDescription}}</option>
+        {{/each}}
+    </select><br>
+</form>
+
+<button onclick="updateSeriesGenres({{seriesgenre.seriesGenresID}})">Update</button>
+<! Script(s) for preloading drop down selections ––>
+<script defer>selectSeriesID({{seriesgenre.seriesID}}); </script>
+<script defer>selectGenresID({{seriesgenre.genreID}});</script>
+</html>

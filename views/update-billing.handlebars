@@ -1,0 +1,15 @@
+<html>
+<h1>Update Billing Information: {{billing.billingFullName}}</h1>
+<! Form for udpating single record ––>
+<form id="update-billing" action="/billings" method="post">
+    billingFullName: <input type="text" name="billingFullName" value="{{billing.billingFullName}}"><br>
+    unitNumber: <input type="text" name="unitNumber" value="{{billing.unitNumber}}"><br>
+    streetName: <input type="text" name="streetName" value="{{billing.streetName}}"><br>
+    cityName: <input type="text" name="cityName" value="{{billing.cityName}}"><br>
+    stateName: <input type="text" name="stateName" value="{{billing.stateName}}"><br>
+    zipCode: <input type="text" name="zipCode" value="{{billing.zipCode}}"><br>
+    creditCardExpiriation: <input type="date" name="creditCardExpiration" id="creditCardExpiration-selector" value={{billing.creditCardExpiration}}><br>
+    creditCardSecurityCode: <input type="number" name="creditCardSecurityCode" value="{{billing.creditCardSecurityCode}}"><br>
+</form>
+<button onclick="updateBilling({{billing.billingID}})">Update</button>
+</html>

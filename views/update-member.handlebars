@@ -1,0 +1,19 @@
+<html>
+<h1>Update Member: {{member.firstName}} {{member.lastName}}</h1>
+<! Form for udpating single record ––>
+<form id="update-member" action="/members" method="post">
+    firstName: <input type="text" name="firstName" value="{{member.firstName}}"><br>
+    lastName: <input type="text" name="lastName" value="{{member.lastName}}"><br>
+    email: <input type="text" name="email" value="{{member.email}}"><br>
+    billingID: <select name="billingID" id="billingID-selector"> 
+        {{#each billings}}
+            <option value="{{billingID}}">{{billingFullName}}</option>
+        {{/each}}
+    </select><br>
+    userLogIn: <input type="text" name="userLogIn" value="{{member.userLogIn}}"><br>
+    password: <input type="text" name="password" value="{{member.password}}"><br>
+</form>
+<button onclick="updateMember({{member.userID}})">Update</button>
+<! Script(s) for preloading drop down selections ––>
+<script defer>selectBillingID({{member.billingID}});</script>
+</html>

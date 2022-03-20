@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entertainment Stream</title>
+</head>
+<body>
+    <! Navigation header ––>
+    <table align=center border=2>
+        <tr>
+            <td width=120 align = center><a href="/">Home</a></td>
+            <td width=120 align = center><a href='/billings'>Billings</a></td>
+            <td width=120 align = center><a href='/members'>Members</a></td>
+            <td width=120 align = center><a href='/episodes'>Episodes</a></td>
+            <td width=120 align = center><a href='/membersepisodes'>MembersEpisodes</a></td>
+            <td width=120 align = center><a href='/series'>Series</a></td>
+            <td width=120 align = center><a href='/genres'>Genres</a></td>
+            <td width=120 align = center><a href='/seriesgenres'>SeriesGenres</a></td>
+        </tr>
+    </table>
+    <h1>
+        Episodes
+    </h1>
+    
+
+
+
+
+
+
+<table border=2>
+        <thead>
+            <th>episodeID</th>
+            <th>episodeName</th>
+            <th>episodeNumber</th>
+            <th>length</th>
+            <th>uploadDate</th>
+            <th>seriesID</th>
+        </thead>
+        <! Loads each entry as a new row in table ––>
+        {{#each episodes}} 
+        <tr>
+            <td>{{episodeID}}</td> 
+            <td>{{episodeName}}</td> 
+            <td>{{episodeNumber}}</td> 
+            <td>{{length}}</td> 
+            <td>{{uploadDate}}</td> 
+            <td>{{seriesID}}</td> 
+            <td><button onclick="deleteEpisodes({{episodeID}})">Delete</button></td>
+            <td><a href="/episodes/{{episodeID}}">Update</a></td>
+        </tr>
+        {{/each}} 
+    </table>
+
+
+
+<p>
+<! Search form for search by name ––>
+<form id='search_episodes' action='' method=''>
+<!--- this form does not submit directly, the button handles all the interaction with backend -->
+    <label> Search episodes by name starting with:</label>
+    <input id='episode_name_search_string' type='text' name='episode_name_search_string' value=''>
+    <input type="button" value="Search" onclick="searchEpisodesByName()">
+
+
+</form>
+<! Resets page to all records after search ––>
+    <a href='/episodes'><button>Reset</button></a>
+
+
+<p>
+
+
+
+
+<! Search form for search by series ––>
+<form id='filter_episodes' action='' method=''>
+<!--- this form does not submit directly, the button handles all the interaction with backend -->
+    <label> Filter by series</label>
+    <select id='episode_series_filter' name="episodes_series"> 
+        {{#each series}}
+        <option value="{{seriesID}}">{{seriesName}}</option>
+        {{/each}}
+    </select>
+    <input type="button" value="Filter" onclick="filterEpisodesBySeries()">
+</form>
+
+
+        </form>
+    <p>
+    <! Form for adding record, including FK ––>
+    <form id="addepisodes" action="/episodes" method="post">
+        <fieldset>Add Episodes
+            <p>
+                <label for="episodeName">episodeName</label>
+                <input type="text" name="episodeName" id="episodes">
+                <label for="episodeNumber">episodeNumber</label>
+                <input type="text" name="episodeNumber" id="episodes">
+                <label for="length">length</label>
+                <input type="text" name="length" id="episodes">
+                <label for="uploadDate">uploadDate</label>
+                <input type="date" name="uploadDate" id="episodes">
+                <label for="seriesID">seriesID</label>
+                <select name="seriesID"> 
+                {{#each series}}
+                <option value="{{seriesID}}">{{seriesName}}</option>
+                {{/each}}
+                </select><br>
+
+    
+            <input type="submit" value="Submit">
+    </fieldset>
+    </form>
+
+
+</body>
+</html>

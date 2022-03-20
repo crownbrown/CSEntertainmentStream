@@ -1,0 +1,21 @@
+<html>
+<h1>Update MembersEpisodes:</h1>
+<! Form for udpating single record ––>
+<form id="update-membersepisode" action="/membersepisodes" method="post">
+    viewDate: <input type="date" name="viewDate" value={{membersepisode.viewDate}}><br>
+    episodeID: <select name="episodeID" id="episodeID-selector"> 
+        {{#each episodes}}
+            <option value="{{episodeID}}">{{episodeName}}</option>
+        {{/each}}
+    </select><br>
+    userID: <select name="userID" id="userID-selector"> 
+        {{#each members}}
+            <option value="{{userID}}">{{firstName}}</option>
+        {{/each}}
+    </select><br>
+</form>
+<button onclick="updateMembersEpisode({{membersepisode.membersEpisodesID}})">Update</button>
+<! Script(s) for preloading drop down selections ––>
+<script defer>selectEpisodeID({{membersepisode.episodeID}});</script>
+<script defer>selectUserID({{membersepisode.userID}});</script>
+</html>

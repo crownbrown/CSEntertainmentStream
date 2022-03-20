@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entertainment Stream</title>
+</head>
+<body>
+    <! Navigation header ––>
+    <table align=center border=2>
+        <tr>
+            <td width=120 align = center><a href="/">Home</a></td>
+            <td width=120 align = center><a href='/billings'>Billings</a></td>
+            <td width=120 align = center><a href='/members'>Members</a></td>
+            <td width=120 align = center><a href='/episodes'>Episodes</a></td>
+            <td width=120 align = center><a href='/membersepisodes'>MembersEpisodes</a></td>
+            <td width=120 align = center><a href='/series'>Series</a></td>
+            <td width=120 align = center><a href='/genres'>Genres</a></td>
+            <td width=120 align = center><a href='/seriesgenres'>SeriesGenres</a></td>
+        </tr>
+    </table>
+    <h1>
+        Billings
+    </h1>
+    
+
+
+
+
+
+<table border=2>
+        <thead>
+            <th>billingID</th>
+            <th>billingFullName</th>
+            <th>unitNumber</th>
+            <th>streetName</th>
+            <th>cityName</th>
+            <th>stateName</th>
+            <th>zipCode</th>
+            <th>creditCardNumber</th>
+            <th>creditCardExpiration</th>
+            <th>creditCardSecurityCode</th>
+        </thead>
+        <! Loads each entry as a new row in table ––>
+        {{#each billings}} 
+        <tr>
+            <td>{{billingID}}</td> 
+            <td>{{billingFullName}}</td> 
+            <td>{{unitNumber}}</td> 
+            <td>{{streetName}}</td> 
+            <td>{{cityName}}</td> 
+            <td>{{stateName}}</td> 
+            <td>{{zipCode}}</td> 
+            <td>{{creditCardNumber}}</td> 
+            <td>{{creditCardExpiration}}</td> 
+            <td>{{creditCardSecurityCode}}</td> 
+            <td><button onclick="deleteBillings({{billingID}})">Delete</button></td>
+            <td><a href="/billings/{{billingID}}">Update</a></td>
+        </tr>
+        {{/each}} 
+    </table>
+
+
+
+<p>
+
+
+<p>
+<! Search form for search by name ––>
+<form id='search_billings' action='' method=''>
+<!--- this form does not submit directly, the button handles all the interaction with backend -->
+    <label> Search billings by name starting with:</label>
+    <input id='billing_name_search_string' type='text' name='billing_name_search_string' value=''>
+    <input type="button" value="Search" onclick="searchBillingsByName()">
+
+
+</form>
+    <! Resets page to all records after search ––>
+    <a href='/billings'><button>Reset</button></a>
+
+
+<p>
+<! Search form for search by state ––>
+<form id='filter_billings' action='' method=''>
+<!--- this form does not submit directly, the button handles all the interaction with backend -->
+    <label> Filter by State Name</label>
+    <select id='billings_state_filter' name="billings_state"> 
+        {{#each billings}}
+        <option value="{{stateName}}">{{stateName}}</option>
+        {{/each}}
+    </select>
+    <input type="button" value="Filter" onclick="filterBillingsByState()">
+</form>
+
+
+
+    <p>
+    <! Form for adding record ––>
+    <form id="billings" action="/billings" method="post">
+        <fieldset>Add Billings
+            <p>
+                <label for="billingFullName">billingFullName</label>
+                <input type="text" name="billingFullName" id="billings">
+                <label for="unitNumber">unitNumber</label>
+                <input type="text" name="unitNumber" id="billings">
+                <label for="streetName">streetName</label>
+                <input type="text" name="streetName" id="billings">
+                <label for="cityName">cityName</label>
+                <input type="text" name="cityName" id="billings">
+                <label for="stateName">stateName</label>
+                <input type="text" name="stateName" id="billings">
+                <label for="zipCode">zipCode</label>
+                <input type="text" name="zipCode" id="billings">
+                <label for="creditCardNumber">creditCardNumber</label>
+                <input type="text" name="creditCardNumber" id="billings">
+                <label for="creditCardExpiration">creditCardExpiration</label>
+                <input type="date" name="creditCardExpiration" id="billings">
+                <label for="creditCardSecurityCode">creditCardSecurityCode</label>
+                <input type="text" name="creditCardSecurityCode" id="billings">
+                <br>
+                <input type="submit" value="Submit">
+    </fieldset>
+    </form>
+
+
+
+
+</body>
+</html>
